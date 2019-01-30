@@ -27,9 +27,9 @@ export default class Login extends Component {
     return (
       <Row id="login_form">
         <Mutation mutation={UserGQL.mutation.register}>
-          {(login, { data, error, loading }) => {
+          {(register, { data, error, loading }) => {
             return <Col xs={{ size: 10, order: 2, offset: 1 }} sm={{ size: 10, order: 2, offset: 1 }} md={{ size: 4, order: 3, offset: 4 }} lg={{ size: 4, order: 3, offset: 4 }}>
-              <Form onSubmit={this.submit.bind(this, login)}>
+              <Form onSubmit={this.submit.bind(this, register)}>
                 <h1 className="text-center">--REGISTER--</h1>
                 { error && <Alert color="danger">Something went wrong. Please Try Again</Alert> }
                 { data && <Alert color="success">Success!  You can now <a style={{color: "inherit"}} href="#" onClick={() => this.props.history.push("/login")}> <strong>Login</strong></a></Alert> }
@@ -42,7 +42,7 @@ export default class Login extends Component {
                   <Input  onChange={this.onChange.bind(this, "password")} disabled={loading} type="password" name="email" id="password_login" placeholder="Desired Password" />
                 </FormGroup>
                 <FormGroup>
-                  <Button type="submit" disabled={loading} block onClick={this.submit.bind(this, login)} color="primary">Login</Button>
+                  <Button type="submit" disabled={loading} block onClick={this.submit.bind(this, register)} color="primary">Login</Button>
                   <Button disabled={loading} block onClick={() => this.props.history.push("/login")}  >Cancel</Button>
                 </FormGroup>
               </Form>

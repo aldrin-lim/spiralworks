@@ -8,9 +8,20 @@ export default {
           id
           email
           password
+          profile
         }
       }
     `,
+    user: gql`
+      query user($id: ID!){
+        user(id: $id){
+          id
+          email
+          password
+          profile
+        }
+      }
+    `
     
   },
   mutation: {
@@ -22,6 +33,14 @@ export default {
     login: gql`
       mutation login($email: String!, $password: String!){
         login(email: $email, password: $password)
+      }
+    `,
+    updateUser: gql`
+      mutation updateUser($id: ID!, $input: UserInput) {
+        updateUser(id: $id, input: $input){
+          id
+          profile
+        }
       }
     `
   }
