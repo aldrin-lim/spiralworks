@@ -8,10 +8,11 @@ import Dashboard from './Dashboard';
 import UpdateProfile from './UpdateProfile';
 export default class Main extends Component {
   componentDidMount = () => {
-    const jwtdata = parseJwt(sessionStorage.getItem("access_token"))
-    console.log(jwtdata)
-    sessionStorage.setItem("firstname", jwtdata.firstname);
-    sessionStorage.setItem("id", jwtdata.id)
+    const jwtdata = sessionStorage.getItem("access_token") && parseJwt(sessionStorage.getItem("access_token"))
+    if (jwtdata) {
+      sessionStorage.setItem("firstname", jwtdata.firstname);
+      sessionStorage.setItem("id", jwtdata.id)
+    }
   }
   
   render() {
