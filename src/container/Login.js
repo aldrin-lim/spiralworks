@@ -17,7 +17,6 @@ export default class Login extends Component {
     const { email, password } = this.state;
     mutation({ variables: { email, password } }).then(async result => {
       // to surely save the session to sessionStorage before going to the main app
-      console.log(result.data.login)
       await (async () => sessionStorage.setItem('access_token', result.data.login))().then(() => this.props.history.push("/"));
       
     });

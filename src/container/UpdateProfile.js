@@ -11,7 +11,6 @@ export default class UpdateProfile extends Component {
     const keys = ["firstname", "lastname","age", "gender"];
     keys.map(item => { if (this.state[item]) input.profile[item] = this.state[item] });
     mutation({ variables: {"id": sessionStorage.getItem("id"), input } }).then(async result => {
-      console.log(result)
     });
   }
   onChange = (id, { target: { value } }) => {
