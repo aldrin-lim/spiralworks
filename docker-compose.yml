@@ -1,13 +1,25 @@
 version: '3.5'
 
 services:
-
-  react-app:
-    container_name: react-app
+  client:
+    container_name: client
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '8080:3000'
+      - '3000:3000'
     environment:
       - NODE_ENV=development
+  server:
+    image: fullstack/server
+    ports: 
+      - '4000:4000'
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=adminroot
+      - MONGO_PW=adminroot1
+      - MONGODB_NAME=graphqldb_aldrin
+      - JWT_SECRET=KbPeShVmYq3t6w9z$C&E)H@McQfTjWnZ
+    command:
+      - npm
+      - start
